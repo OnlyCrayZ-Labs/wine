@@ -1,3 +1,4 @@
+// MSFS 2024 compatibility modifications: 2026-10-22; see PUBLICATION-PROVENANCE.md.
 /*
  * GStreamer parser backend
  *
@@ -1149,6 +1150,15 @@ static bool stream_create_post_processing_elements(GstPad *pad, struct wg_parser
     }
     else if (!strcmp(name, "video/x-raw"))
     {
+        /* This chain processes CPU frames. In particular, videoflip cannot
+         * consume CUDA memory. The passthrough elements below can advertise
+         * ANY memory features, so constrain the decoder before capssetter
+         * rather than allowing a hardware decoder to choose GPU output. */
+        if (!(element = create_element("capsfilter", "base"))
+                || !append_element(parser->container, element, &first, &last))
+            return false;
+        gst_util_set_object_arg(G_OBJECT(element), "caps", "video/x-raw");
+
         /* Hack?: Flatten down the colorimetry to default values, without
          * actually modifying the video at all.
          *
