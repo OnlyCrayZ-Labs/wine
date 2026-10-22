@@ -1,3 +1,22 @@
+# wine — experimental MSFS 2024 Linux compatibility
+
+Part of [OnlyCrayZ-Labs/MSFS2024-Linux](https://github.com/OnlyCrayZ-Labs/MSFS2024-Linux),
+based on [xodus-gaming/wine](https://github.com/xodus-gaming/wine).
+This is an experimental source preview. The user-reported first playable test
+used a standard MSFS 2024 aircraft in a preserved private checkpoint; the public
+sources still require reproducible clean-installation and stability validation.
+Fenix A320, Navigraph, BeyondATC and other third-party add-ons are not validated.
+Xbox cloud-save synchronization is not implemented. A legitimate game license
+is required; this community project is not affiliated with Microsoft or Asobo.
+
+See the [project overlay](README.MSFS2024.md), [contribution guide](CONTRIBUTING.md)
+and [security policy](SECURITY.md). OnlyCrayZ controls official merges and releases.
+Existing upstream copyright notices and licenses remain unchanged. The upstream
+README follows; its general build instructions do not establish a reproducible
+MSFS 2024 installation.
+
+---
+
 ## INTRODUCTION
 
 Wine is a program which allows running Microsoft Windows programs
